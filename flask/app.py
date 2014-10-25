@@ -80,5 +80,12 @@ def todo_show():
   tasks = [dict(tid=row[0], name=row[1]) for row in cur.fetchall()]
   return render_template('todo.html', tasks=tasks)
 
+@app.route("/todo/remove/<int:tid>")
+def todo_remove(tid):
+  sql_command = "delete from tasks where id=%d" % tid
+  g.db.execute(sql_command)
+  g.db.commit()
+  return redirect(url_for('todo_show'))
+
 if __name__ == "__main__":
   app.run(debug=True)

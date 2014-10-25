@@ -5,7 +5,13 @@
 
   <ul class=entries>
     {% for task in tasks %}
-      <li><h2>{{ task.name }}</h2>
+      <li>
+        <h2>{{ task.name }}
+          <a href="{{ url_for("todo_remove", tid=task.tid) }}" class="small">
+             -- DONE!
+          </a>
+        </h2> 
+      </li>
     {% else %}
       <li><em>WOOHOO!.  No todos here so far</em>
     {% endfor %}
