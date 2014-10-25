@@ -2,3 +2,4 @@
 # ignore virtualenv folders.
 */venv
 
+.DS_Store
