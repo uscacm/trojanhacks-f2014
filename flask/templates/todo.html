@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <a href="{{ url_for("todo_new") }}">Add new task</a>
+
+  <ul class=entries>
+    {% for task in tasks %}
+      <li><h2>{{ task.name }}</h2>
+    {% else %}
+      <li><em>WOOHOO!.  No todos here so far</em>
+    {% endfor %}
+  </ul>
+{% endblock %}
