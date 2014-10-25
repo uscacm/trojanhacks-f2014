@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import url_for
+from flask import request
 app = Flask(__name__)
 
 @app.route("/")
@@ -14,7 +15,14 @@ def about():
 @app.route("/hello_page/")
 @app.route("/hello_page/<name>")
 def hello_page(name=None):
-  return render_template("hello.html", name = name);
+  return render_template("hello.html", name = name)
+
+@app.route("/http", methods=['POST', 'GET'])
+def http_demo():
+  if request.method == 'POST':
+    return "POST Request"
+  else:
+    return "GET Request"
 
 @app.route("/hello/")
 def hello():
