@@ -11,6 +11,11 @@ def index():
 def about():
   return render_template("about.html")
 
+@app.route("/hello_page/")
+@app.route("/hello_page/<name>")
+def hello_page(name=None):
+  return render_template("hello.html", name = name);
+
 @app.route("/hello/")
 def hello():
   return "Hello World!"
